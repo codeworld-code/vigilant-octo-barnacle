@@ -4,31 +4,11 @@
   <meta charset="utf-8" />
   <title>Redirecting…</title>
   <meta name="robots" content="noindex" />
-  <!-- Fallback if JS is disabled -->
+  <!-- Instant redirect if JavaScript disabled -->
   <meta http-equiv="refresh" content="0; url=https://www.google.com/search?q=problocker+adblocker">
   <script>
-    (function () {
-      // ----- CONFIG -----
-      const target = "https://www.google.com/search?q=problocker+adblocker";
-
-      // Use CountAPI as a lightweight counter (no auth needed)
-      // Change 'problocker.example' to any unique namespace (e.g., your domain or repo name)
-      // Change 'redirect' to any key name you like
-      const counterUrl = "https://api.countapi.xyz/hit/problocker.example/redirect";
-
-      // Try to increment counter, but don't block the redirect
-      const bump = fetch(counterUrl, { cache: "no-store", mode: "cors" })
-        .catch(() => { /* ignore errors */ });
-
-      // Redirect ASAP; let the counter race for a short moment
-      const go = () => location.replace(target);
-
-      // Race redirect after ~150ms or when counter returns, whichever comes first
-      Promise.race([
-        bump,
-        new Promise(res => setTimeout(res, 150))
-      ]).finally(go);
-    })();
+    // Redirect instantly (same window)
+    location.replace("https://www.google.com/search?q=problocker+adblocker");
   </script>
 </head>
 <body></body>
