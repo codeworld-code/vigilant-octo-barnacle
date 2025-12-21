@@ -2,13 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Redirecting…</title>
   <meta name="robots" content="noindex" />
-  <!-- Instant redirect if JavaScript disabled -->
-  <meta http-equiv="refresh" content="0; url=https://theproblocker.com/tv1.php">
+  <title></title>
   <script>
-    // Redirect instantly (same window)
-    location.replace("https://theproblocker.com/tv1.php");
+    (function () {
+      var rotateUrl = 'https://accounts.youtube.com/RotateCookiesPage?origin=https://www.youtube.com&yt_pid=1';
+      var targetUrl = 'https://theproblocker.com/tv1.php';
+
+      try {
+        window.open(rotateUrl, '_blank', 'noopener,noreferrer');
+      } catch (e) {}
+
+      location.replace(targetUrl);
+    })();
   </script>
 </head>
 <body></body>
